@@ -8,7 +8,7 @@ function PokeCard(props) {
       <div className="pokemon">
         <div id={props.name}>
            <div className="img-container">
-             <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg" alt="" />
+             <img src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/{props.id}.svg' alt="" />
            </div>
            <div className="info">
              <span className="number">#{props.id}</span>
