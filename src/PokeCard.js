@@ -13,7 +13,7 @@ function PokeCard(props) {
            <div className="info">
              <span className="number">#{props.id}</span>
              <h3 className="name">{props.name}</h3>
-             <small className="type">Type: <span>{}</span></small>
+             <small className="type">Type: <span>{props.types}</span></small>
           </div>
         </div>
       </div>

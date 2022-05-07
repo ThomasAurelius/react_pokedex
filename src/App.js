@@ -15,13 +15,15 @@ function App() {
     
     setPokemonData(data)
     
-    
   }
+  
     getPokemon(1)  
     }, [])  
+    
+
   )
 
-
+console.log(pokemonData)
 
   return (
     <div className="App">
