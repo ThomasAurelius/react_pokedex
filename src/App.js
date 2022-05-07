@@ -4,6 +4,7 @@ import PokeCard from './PokeCard'
 import './style.css';
 
 function App() {
+  const pokemonId = 1
   
   const [pokemonData, setPokemonData] = React.useState(
 
@@ -17,7 +18,7 @@ function App() {
     
   }
   
-    getPokemon(1)  
+    getPokemon(pokemonId)  
     }, [])  
     
 
