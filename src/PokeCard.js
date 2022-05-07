@@ -1,19 +1,72 @@
 import React from 'react'
 
-function PokeCard(props) {
+function PokeCard() {
+
+
+  const [pokemonData, setPokemonData] = React.useState({})
+
+  React.useEffect(() => {
+    const getPokemon = async (id) => {
+    const url = `https://pokeapi.co/api/v2/pokemon/${id}`
+    const res = await fetch(url)
+    const data = await res.json()    
+    setPokemonData(data) 
+    
+  }
+    getPokemon(1)  
+    }, [])  
+  
+  console.log(pokemonData)
          
+   const poke_type = pokemonData.types.map(type => type.type.name)
+   let poke_type2 = ""
+   if (poke_type[1]) {
+      poke_type2 = poke_type[1]
+   } else {
+      poke_type2 = poke_type 
+   }
+
+
+   const colors = {
+   fire: '#d82b34',
+   fairy: '#fceaff',
+   bug: '#f8d5a3',
+   psychic: '#eaeda1',
+   grass: '#1ad148',
+	electric: '#FCF7DE',
+	water: '#DEF3FD',
+   poison: '#837ad6',
+	ground: '#f4e7da',
+	rock: '#d5d5d4',
+   normal: '#F5F5F5',	
+	dragon: '#97b3e6',	
+	flying: '#30aae2',
+	fighting: '#E6E0D4',	
+   steel: '#979595',
+   ice: '#6eb8e9'   
+}
+const main_types = Object.keys(colors)
+
+
+
+   const type = main_types.find(type => poke_type[0].indexOf(type) > -1)
+   const type2 = main_types.find(type => poke_type2.indexOf(type) > -1)
+
+   const color = colors[type]
+   const color2 = colors[type2]
+
   return (
     
     <div className="PokeCard">
-      <div className="pokemon">
-        <div id={props.name}>
+      <div className="pokemon" style={{background: `linear-gradient(${color2}, ${color})`}}>
+        <div id={pokemonData.name}>
            <div className="img-container">
-             <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg" alt="" />
+             <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonData.id}.svg`} alt="" />
            </div>
            <div className="info">
-             <span className="number">#{props.id}</span>
-             <h3 className="name">{props.name}</h3>
-             <small className="type">Type: <span>{}</span></small>
+             <span className="number">#{pokemonData.id}</span>
+             <h3 className="name">{pokemonData.name}</h3>
+             <small className="type">Type: <span>{poke_type}</span></small>
           </div>
         </div>
       </div>
