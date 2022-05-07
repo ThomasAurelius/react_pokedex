@@ -29,7 +29,7 @@ console.log(pokemonData)
   return (
     <div className="App">
       <Header />
-      <PokeCard pokemonData={pokemonData} />
+      <PokeCard pokemonData={{...pokemonData}} />
     </div>
   );
 }
