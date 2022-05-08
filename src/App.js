@@ -11,15 +11,25 @@ function App() {
     endId: 20
   })
   
-
+//make a loop that returns pokecard with prop numbers from start to end
   
+
+const pokeId = () => {
+ let pokemon = []
+  for (let i = id.startId; i < id.endId; i++ ) {
+    
+     pokemon.push(<PokeCard id={i} />)
+    
+  }
+  return pokemon
+}
+ 
 
     return (
     <div className="App">
       <Header />
-      
-    <PokeCard id={1} />
-    <PokeCard id={2} />
+      {pokeId()}
+  
         </div>
   );
     
