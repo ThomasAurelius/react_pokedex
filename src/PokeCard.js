@@ -1,7 +1,9 @@
 import React from 'react'
 import { nanoid } from 'nanoid'
 import  icons  from './icons/iconindex.js'
-import grass from './icons/grass.svg'
+import grassIcon from './icons/grass.svg'
+import poisonIcon from './icons/poison.svg'
+import fireIcon from './icons/fire.svg'
 
 
 
@@ -34,9 +36,9 @@ export default function PokeCard(props) {
 console.log(pokemonData)
          
 const pokemonIcons = {
-  grass: './icons/grass.svg',
-  poison: './icons/poison.svg',
-  fire: './icons/fire/svg'
+  gras: grassIcon,
+  poison: poisonIcon,
+  fire: fireIcon
 }
   const colors = {
    fire: '#d82b34',
@@ -89,20 +91,7 @@ const poke_type = pokemonData.types.map(item => {
                 <h3 className="name">{pokemonData.name}</h3>
                
                 <h4>type variable = {type}</h4>
-                <img class="type-icon" src="./icons/{type}" alt={` regular string and variable - ${type}`} />
-                <br />
-                <img class="type-icon" src={pokemonIcons.type} alt={` using an object and variable - ${type}`} />
-                <br />
-                <img class="type-icon" src={icons.type} alt={` using an imported index & variable - ${type}`} />
-                <br />
-                <img class="type-icon" src={`./icons/${type}.svg`} alt={` string interpolation & variable - ${type}`} />
-                <br />
-                <img class="type-icon" src={`${type}`} alt={` local import & import name - ${type}`} />
-                <br />
-                <img class="type-icon" src="../src/icons/grass.svg" alt={` no variable, direct path - ${type}`} />
-            
-                <br />
-
+                <img class="type-icon" src="{pokemonIcons[type]}" alt="using an object and variable - {type}" />
                 <small className="type">Type: <span>{type}, {type2}</span></small>
               </div>        
             </div>
