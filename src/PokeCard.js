@@ -36,7 +36,7 @@ export default function PokeCard(props) {
 console.log(pokemonData)
          
 const pokemonIcons = {
-  gras: grassIcon,
+  grass: grassIcon,
   poison: poisonIcon,
   fire: fireIcon
 }
@@ -91,7 +91,7 @@ const poke_type = pokemonData.types.map(item => {
                 <h3 className="name">{pokemonData.name}</h3>
                
                 <h4>type variable = {type}</h4>
-                <img class="type-icon" src="{pokemonIcons[type]}" alt="using an object and variable - {type}" />
+                <img className="type-icon" src={pokemonIcons[type]} alt={`${type} type`} />
                 <small className="type">Type: <span>{type}, {type2}</span></small>
               </div>        
             </div>
