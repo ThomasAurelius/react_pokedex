@@ -115,5 +115,5 @@ const poke_type = pokemonData.types.map(item => {
   
 }
 
-//line 85 not working- not displaying the svg according to type
+//line 91 -102 not working- not displaying the svg according to type
 //fix the double type issue when pokemon only has 1 type..
