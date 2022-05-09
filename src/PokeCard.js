@@ -21,15 +21,13 @@ import steelIcon from './icons/steel.svg'
 import waterIcon from './icons/water.svg'
 
 
-
-
-
 export default function PokeCard(props) {
   
  
   console.log(props)
   const [pokemonData, setPokemonData] = React.useState({})
   const [loading, setLoading] = React.useState(true)
+  const [isClicked, setIsClicked] = React.useState(false)
 
   
   React.useEffect(() => {
@@ -88,6 +86,8 @@ const pokemonIcons = {
    normal: '#F5F5F5',	
 	 dragon: '#97b3e6',	
 	 flying: '#30aae2',
+   ghost: "",
+   dark: "",
 	 fighting: '#E6E0D4',	
    steel: '#979595',
    ice: '#6eb8e9'   
@@ -105,32 +105,37 @@ const poke_type = pokemonData.types.map(item => {
       poke_type2 = poke_type 
    }
 
-   const type = main_types.find(type => poke_type[0].indexOf(type) > -1)
-   const type2 = main_types.find(type => poke_type2.indexOf(type) > -1)
-
-   const color = colors[type]
-   const color2 = colors[type2]
-
+  const type = main_types.find(type => poke_type[0].indexOf(type) > -1)
+  const type2 = main_types.find(type => poke_type2.indexOf(type) > -1)
    
+  const name = pokemonData.name[0].toUpperCase() + pokemonData.name.slice(1)
+
+  function showStatsCard() {   
+    setIsClicked(prevIsClicked => !prevIsClicked)
+    
+  }
+
+
+
       return (
         
-        <div className="PokeCard" key={nanoid()} id={pokemonData.name}>
-          <div className="pokemon" style={{background: `linear-gradient(${color2}, ${color})`}}>
+        <div className="PokeCard" key={nanoid()} id={pokemonData.name} onClick={showStatsCard}>
+          <div className="pokemon" >
             <div id={pokemonData.name} className="pokemon-wrapper">
 
               <div className="img-container">
                 <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonData.id}.svg`} alt="" />
               </div>
               <div className="info">            
-                <h3 className="name">{pokemonData.name}</h3>
-               
+                <h3 className="name">{name}</h3>
+              
                <img className="type-icon" src={pokemonIcons[type]} alt={`${type} type`} />
                {(type !== type2) ? <img className="type-icon" src={pokemonIcons[type2]} alt={`${type} type`} /> : <></> }
 
-                <small className="type">Type: <span>{type}, {type2}</span></small>
-              </div>        
+              </div>  
+              <span className="number">#{pokemonData.id}</span>      
             </div>
-               <span className="number">#{pokemonData.id}</span>
+               
           </div>
         </div>
       );
@@ -139,5 +144,4 @@ const poke_type = pokemonData.types.map(item => {
   
 }
 
-//line 91 -102 not working- not displaying the svg according to type
-//fix the double type issue when pokemon only has 1 type..
+
