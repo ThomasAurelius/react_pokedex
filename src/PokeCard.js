@@ -1,9 +1,25 @@
 import React from 'react'
 import { nanoid } from 'nanoid'
-import  icons  from './icons/iconindex.js'
-import grassIcon from './icons/grass.svg'
-import poisonIcon from './icons/poison.svg'
+
+import bugIcon from './icons/bug.svg'
+import darkIcon from './icons/dark.svg'
+import dragonIcon from './icons/dragon.svg'
+import electricIcon from './icons/electric.svg'
+import fairyIcon from './icons/fairy.svg'
+import fightingIcon from './icons/fighting.svg'
 import fireIcon from './icons/fire.svg'
+import flyingIcon from './icons/flying.svg'
+import ghostIcon from './icons/ghost.svg'
+import grassIcon from './icons/grass.svg'
+import groundIcon from './icons/ground.svg'
+import iceIcon from './icons/ice.svg'
+import normalIcon from './icons/normal.svg'
+import poisonIcon from './icons/poison.svg'
+import psychicIcon from './icons/psychic.svg'
+import rockIcon from './icons/rock.svg'
+import steelIcon from './icons/steel.svg'
+import waterIcon from './icons/water.svg'
+
 
 
 
@@ -36,10 +52,28 @@ export default function PokeCard(props) {
 console.log(pokemonData)
          
 const pokemonIcons = {
+  bug: bugIcon,
+  dark: darkIcon,
+  dragon: dragonIcon,
+  electric: electricIcon,
+  fairy: fairyIcon,
+  fighting: fightingIcon,
+  fire: fireIcon,
+  flying: flyingIcon,
+  ghost: ghostIcon,  
   grass: grassIcon,
+  ground: groundIcon,
+  ice: iceIcon,
+  normal: normalIcon,
   poison: poisonIcon,
-  fire: fireIcon
-}
+  psychic: psychicIcon,
+  rock: rockIcon,
+  steel: steelIcon,
+  water: waterIcon
+  
+
+}  
+
   const colors = {
    fire: '#d82b34',
    fairy: '#fceaff',
@@ -90,8 +124,9 @@ const poke_type = pokemonData.types.map(item => {
               <div className="info">            
                 <h3 className="name">{pokemonData.name}</h3>
                
-                <h4>type variable = {type}</h4>
-                <img className="type-icon" src={pokemonIcons[type]} alt={`${type} type`} />
+               <img className="type-icon" src={pokemonIcons[type]} alt={`${type} type`} />
+               {(type !== type2) ? <img className="type-icon" src={pokemonIcons[type2]} alt={`${type} type`} /> : <></> }
+
                 <small className="type">Type: <span>{type}, {type2}</span></small>
               </div>        
             </div>
