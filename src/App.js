@@ -10,13 +10,11 @@ function App() {
     startId: 1,
     endId: 20
   })
-  
-//make a loop that returns pokecard with prop numbers from start to end
-  
+   
 
 const pokeId = () => {
  let pokemon = []
-  for (let i = id.startId; i < id.endId; i++ ) {
+  for (let i = id.startId; i <= id.endId; i++ ) {
     
      pokemon.push(<PokeCard id={i} />)
     
@@ -24,7 +22,6 @@ const pokeId = () => {
   return pokemon
 }
  
-
     return (
     <div className="App">
       <Header />
@@ -33,8 +30,11 @@ const pokeId = () => {
         </div>
   );
     
-
-
 }
 
 export default App;
+
+
+//make buttons for generations
+//re-style cards for a more modern look
+//make a function that when a card is clicked, it expands with little more info

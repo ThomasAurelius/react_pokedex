@@ -1,6 +1,7 @@
 import React from 'react'
 import { nanoid } from 'nanoid'
 
+
 export default function PokeCard(props) {
   
  
@@ -70,16 +71,18 @@ const poke_type = pokemonData.types.map(item => {
         
         <div className="PokeCard" key={nanoid()} id={pokemonData.name}>
           <div className="pokemon" style={{background: `linear-gradient(${color2}, ${color})`}}>
-            <div id={pokemonData.name}>
-              <span className="number">#{pokemonData.id}</span>
+            <div id={pokemonData.name} className="pokemon-wrapper">
+
               <div className="img-container">
                 <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonData.id}.svg`} alt="" />
               </div>
               <div className="info">            
                 <h3 className="name">{pokemonData.name}</h3>
                 <small className="type">Type: <span>{type}, {type2}</span></small>
+                <img src={`./icons/${type}.svg`} alt={`pokemon type icon - ${type}`} />
               </div>        
             </div>
+               <span className="number">#{pokemonData.id}</span>
           </div>
         </div>
       );
@@ -87,3 +90,5 @@ const poke_type = pokemonData.types.map(item => {
 
   
 }
+
+//fix the double type issue when pokemon only has 1 type..
