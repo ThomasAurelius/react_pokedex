@@ -1,5 +1,9 @@
 import React from 'react'
 import { nanoid } from 'nanoid'
+import  icons  from './icons/iconindex.js'
+import grass from './icons/grass.svg'
+
+
 
 
 export default function PokeCard(props) {
@@ -29,6 +33,11 @@ export default function PokeCard(props) {
 
 console.log(pokemonData)
          
+const pokemonIcons = {
+  grass: './icons/grass.svg',
+  poison: './icons/poison.svg',
+  fire: './icons/fire/svg'
+}
   const colors = {
    fire: '#d82b34',
    fairy: '#fceaff',
@@ -78,8 +87,23 @@ const poke_type = pokemonData.types.map(item => {
               </div>
               <div className="info">            
                 <h3 className="name">{pokemonData.name}</h3>
+               
+                <h4>type variable = {type}</h4>
+                <img class="type-icon" src="./icons/{type}" alt={` regular string and variable - ${type}`} />
+                <br />
+                <img class="type-icon" src={pokemonIcons.type} alt={` using an object and variable - ${type}`} />
+                <br />
+                <img class="type-icon" src={icons.type} alt={` using an imported index & variable - ${type}`} />
+                <br />
+                <img class="type-icon" src={`./icons/${type}.svg`} alt={` string interpolation & variable - ${type}`} />
+                <br />
+                <img class="type-icon" src={`${type}`} alt={` local import & import name - ${type}`} />
+                <br />
+                <img class="type-icon" src="../src/icons/grass.svg" alt={` no variable, direct path - ${type}`} />
+            
+                <br />
+
                 <small className="type">Type: <span>{type}, {type2}</span></small>
-                <img src={`./icons/${type}.svg`} alt={`pokemon type icon - ${type}`} />
               </div>        
             </div>
                <span className="number">#{pokemonData.id}</span>
@@ -91,4 +115,5 @@ const poke_type = pokemonData.types.map(item => {
   
 }
 
+//line 85 not working- not displaying the svg according to type
 //fix the double type issue when pokemon only has 1 type..

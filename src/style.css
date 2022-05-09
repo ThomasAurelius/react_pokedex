@@ -51,6 +51,10 @@ h1 {
 	
 }
 
+.type-icon {
+	width: 10px;
+}
+
 .pokemon-wrapper {
 	display: flex;
 }
