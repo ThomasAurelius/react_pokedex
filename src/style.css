@@ -59,6 +59,7 @@ h1 {
 	height: 60px;
 	text-align: center;
 	padding: 2.5px;
+	margin: 5px;
 }
 
 .type-icon {
@@ -87,7 +88,7 @@ h1 {
 }
 
 .pokemon .info .name {
-	margin: 15px 10px 7px;
+	margin: 5px 10px 5px;
 	letter-spacing: 0.8px;
 	font-size: 1.3rem;
 }
@@ -115,6 +116,7 @@ h1 {
 	width: 260px;
 	height: 260px;
 	text-align: center;
+	
 }
 
 .pokemon-detail .img-container img {
@@ -144,9 +146,14 @@ h1 {
 }
 
 .stats {
+	display: flex;
 	width: 240px;
 	margin: 0;
 	padding: 0;
+}
+
+.stats p {
+	margin-right: 5px;
 }
 
 .stats-card-img {
@@ -226,3 +233,29 @@ h1 {
 	}
 }
 
+.modal-title {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border: 1px solid red;
+}
+
+.modal-img-name {
+	display: flex;
+	border: 1px solid blue;
+	margin-inline: 10px;
+}
+
+.modal-name {
+	display: flex;
+	flex-direction: column;
+}
+
+.modal img {
+	width: 100px;
+}
+
+.modal .type-icon {
+	width: 20px;
+	margin: 2.5px;
+}

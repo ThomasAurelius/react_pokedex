@@ -1,5 +1,7 @@
 import React from 'react'
 import { nanoid } from 'nanoid'
+import Modal from 'react-bootstrap/Modal'
+import Button from 'react-bootstrap/Button'
 
 import bugIcon from './icons/bug.svg'
 import darkIcon from './icons/dark.svg'
@@ -23,11 +25,17 @@ import waterIcon from './icons/water.svg'
 
 export default function PokeCard(props) {
   
+
+  const [show, setShow] = React.useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
  
   console.log(props)
   const [pokemonData, setPokemonData] = React.useState({})
   const [loading, setLoading] = React.useState(true)
-  const [isClicked, setIsClicked] = React.useState(false)
+  
 
   
   React.useEffect(() => {
@@ -110,21 +118,16 @@ const poke_type = pokemonData.types.map(item => {
    
   const name = pokemonData.name[0].toUpperCase() + pokemonData.name.slice(1)
 
-  function showStatsCard() {   
-    setIsClicked(prevIsClicked => !prevIsClicked)
-    
-  }
-
-
-
+   const ability1 = pokemonData.abilities[0].ability.name[0].toUpperCase() + pokemonData.abilities[0].ability.name.slice(1)
+   
       return (
         
-        <div className="PokeCard" key={nanoid()} id={pokemonData.name} onClick={showStatsCard}>
+        <div className="PokeCard" key={nanoid()} id={pokemonData.name} onClick={handleShow} >
           <div className="pokemon" >
             <div id={pokemonData.name} className="pokemon-wrapper">
 
               <div className="img-container">
-                <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonData.id}.svg`} alt="" />
+                <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonData.id}.svg`} alt={`${name}`} />
               </div>
               <div className="info">            
                 <h3 className="name">{name}</h3>
@@ -137,11 +140,74 @@ const poke_type = pokemonData.types.map(item => {
             </div>
                
           </div>
+        
+
+      <Modal show={show} onHide={handleClose} centered dialogClassName="modal">
+        <Modal.Header closeButton>
+          <Modal.Title >
+            <div className="modal-title">
+              <div>
+                <span className="number">#{pokemonData.id}</span>
+              </div>
+              <div className='modal-img-name'>
+                <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonData.id}.svg`} alt={`${name}`} />
+                <div className="modal-name">
+                  {name}
+                  <img className="type-icon" src={pokemonIcons[type]} alt={`${type} type`} />
+                      {(type !== type2) ? <img className="type-icon" src={pokemonIcons[type2]} alt={`${type} type`} /> : <></> }
+                </div>
+              </div>
+              
+            </div>
+        </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        
+        <div className="stats">
+          <p>Ability: </p>{ability1}
         </div>
+        <div>
+          <div className="stats">
+            <p>Hit Points: </p>
+            {pokemonData.stats[0].base_stat}
+          </div>
+          <div className="stats">
+            <p>Attack: </p>
+            {pokemonData.stats[1].base_stat}
+          </div>
+          <div className="stats">
+            <p>Defense: </p>
+            {pokemonData.stats[2].base_stat}
+          </div>
+          <div className="stats">
+            <p>Special Attack:  </p>
+            {pokemonData.stats[3].base_stat}
+          </div>
+          <div className="stats">
+            <p>Special Defense: </p>
+            {pokemonData.stats[4].base_stat}
+          </div>
+          <div className="stats">
+            <p>Speed: </p>
+            {pokemonData.stats[5].base_stat}
+          </div>
+        </div>
+
+     
+        
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          
+        </Modal.Footer>
+      </Modal>
+    
+  </div>
+
       );
     
-
-  
 }
 
 
