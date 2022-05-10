@@ -23,7 +23,9 @@ h1 {
 	letter-spacing: 3px;
 }
 
-
+.App h4 {
+	text-align: center;
+}
 
 .poke-container {
 	display: flex;
@@ -99,8 +101,6 @@ h1 {
 	margin: 0 auto;
 }
 
-
-
 .stats {
 	display: flex;
 	width: 240px;
@@ -157,11 +157,13 @@ h1 {
 
 
 .generation-btns {
-	margin-block: 20px;
+	display: flex;
+	gap: 2.5px;
+	
 }
 
 
-.generation-btns>button {
+.button {
 	background-color: #ffcb00;
 	color: #00428a;
 	border: 1px solid #00428a;

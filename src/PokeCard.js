@@ -76,32 +76,8 @@ const pokemonIcons = {
   rock: rockIcon,
   steel: steelIcon,
   water: waterIcon
-  
-
 }  
 
-  const colors = {
-   fire: '#d82b34',
-   fairy: '#fceaff',
-   bug: '#f8d5a3',
-   psychic: '#eaeda1',
-   grass: '#1ad148',
-	 electric: '#FCF7DE',
-	 water: '#DEF3FD',
-   poison: '#837ad6',
-	 ground: '#f4e7da',
-   rock: '#d5d5d4',
-   normal: '#F5F5F5',	
-	 dragon: '#97b3e6',	
-	 flying: '#30aae2',
-   ghost: "darkgrey",
-   dark: "black",
-	 fighting: '#E6E0D4',	
-   steel: '#979595',
-   ice: '#6eb8e9'   
-}
-const main_types = Object.keys(colors)
-//cleanup type/poke_type/main_type/colors etc now that colors is not being used for bg.
 
 
 const types = pokemonData.types.map(item => {
