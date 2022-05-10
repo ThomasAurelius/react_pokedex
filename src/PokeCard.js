@@ -118,8 +118,23 @@ const poke_type = pokemonData.types.map(item => {
    
   const name = pokemonData.name[0].toUpperCase() + pokemonData.name.slice(1)
 
-   const ability1 = pokemonData.abilities[0].ability.name[0].toUpperCase() + pokemonData.abilities[0].ability.name.slice(1)
    
+   var ability1 = "NA"
+   var ability2 = "NA"
+   var ability3 = "NA"
+     //keeps page from crashing if there is less ability types than expected
+   if (pokemonData.abilities.length === 1) {
+       ability1 = pokemonData.abilities[0].ability.name[0].toUpperCase() + pokemonData.abilities[0].ability.name.slice(1)     
+     } else if (pokemonData.abilities.length === 2) {
+       ability1 = pokemonData.abilities[0].ability.name[0].toUpperCase() + pokemonData.abilities[0].ability.name.slice(1) 
+       ability2 = pokemonData.abilities[1].ability.name[0].toUpperCase() + pokemonData.abilities[1].ability.name.slice(1)       
+     } else if (pokemonData.abilities.length === 3) {
+       ability1 = pokemonData.abilities[0].ability.name[0].toUpperCase() + pokemonData.abilities[0].ability.name.slice(1) 
+       ability2 = pokemonData.abilities[1].ability.name[0].toUpperCase() + pokemonData.abilities[1].ability.name.slice(1) 
+       ability3 = pokemonData.abilities[2].ability.name[0].toUpperCase() + pokemonData.abilities[2].ability.name.slice(1)   
+     }
+   
+ 
       return (
         
         <div className="PokeCard" key={nanoid()} id={pokemonData.name} onClick={handleShow} >
@@ -142,8 +157,8 @@ const poke_type = pokemonData.types.map(item => {
           </div>
         
 
-      <Modal show={show} onHide={handleClose} centered dialogClassName="modal">
-        <Modal.Header closeButton>
+      <Modal show={show} onHide={handleClose} centered dialogClassName="Modal">
+        <Modal.Header >
           <Modal.Title >
             <div className="modal-title">
               <div>
@@ -156,54 +171,58 @@ const poke_type = pokemonData.types.map(item => {
                   <img className="type-icon" src={pokemonIcons[type]} alt={`${type} type`} />
                       {(type !== type2) ? <img className="type-icon" src={pokemonIcons[type2]} alt={`${type} type`} /> : <></> }
                 </div>
-              </div>
-              
+              </div>              
             </div>
-        </Modal.Title>
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        
-        <div className="stats">
-          <p>Ability: </p>{ability1}
-        </div>
-        <div>
-          <div className="stats">
-            <p>Hit Points: </p>
-            {pokemonData.stats[0].base_stat}
+          <div className="abilities">
+            <div>
+              Ability 1: {ability1}
+            </div>
+            <div>
+              {(ability2 !== "NA") ? `Ability 2: ${ability2}` : ``}
+            </div>
+            <div>
+              {(ability3 !== "NA") ? `Ability 3: ${ability3}` : ``}
+            </div>
           </div>
-          <div className="stats">
-            <p>Attack: </p>
-            {pokemonData.stats[1].base_stat}
-          </div>
-          <div className="stats">
-            <p>Defense: </p>
-            {pokemonData.stats[2].base_stat}
-          </div>
-          <div className="stats">
-            <p>Special Attack:  </p>
-            {pokemonData.stats[3].base_stat}
-          </div>
-          <div className="stats">
-            <p>Special Defense: </p>
-            {pokemonData.stats[4].base_stat}
-          </div>
-          <div className="stats">
-            <p>Speed: </p>
-            {pokemonData.stats[5].base_stat}
-          </div>
-        </div>
-
-     
+          <div>
+            <div className="stats">
+              <p>Hit Points: </p>
+              {pokemonData.stats[0].base_stat}
+            </div>
+            <div className="stats">
+              <p>Attack: </p>
+              {pokemonData.stats[1].base_stat}
+            </div>
+            <div className="stats">
+              <p>Defense: </p>
+              {pokemonData.stats[2].base_stat}
+            </div>
+            <div className="stats">
+              <p>Special Attack:  </p>
+              {pokemonData.stats[3].base_stat}
+            </div>
+            <div className="stats">
+              <p>Special Defense: </p>
+              {pokemonData.stats[4].base_stat}
+            </div>
+            <div className="stats">
+              <p>Speed: </p>
+              {pokemonData.stats[5].base_stat}
+            </div>
+          </div>   
         
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+        <p><em>Press Esc to close. Button under construction! </em></p>
+          <Button variant="primary" onClick={handleClose}>
             Close
           </Button>
           
         </Modal.Footer>
-      </Modal>
-    
+      </Modal>    
   </div>
 
       );

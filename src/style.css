@@ -16,7 +16,7 @@ body {
 }
 
 .title_img {
-	max-width: 30vw;
+	max-width: 300px;
 }
 
 h1 {
@@ -99,51 +99,7 @@ h1 {
 	margin: 0 auto;
 }
 
-.pokemon-detail {
-	display: flex;
-	background-color: #eee;
-	border-radius: 10px;
-	box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
-	margin: 10px;
-	padding: 20px;
-	text-align: center;
-	gap: 1rem;
-}
 
-.pokemon-detail .img-container {
-	background-color: rgba(255, 255, 255, 0.6);
-	border-radius: 50%;
-	width: 260px;
-	height: 260px;
-	text-align: center;
-	
-}
-
-.pokemon-detail .img-container img {
-	max-width: 90%;
-	margin-top: 10px;
-}
-
-.pokemon-detail .info {
-	margin-top: 20px;
-}
-
-.pokemon-detail .info .number {
-	background-color: rgba(0, 0, 0, 0.1);
-	padding: 5px 10px;
-	border-radius: 10px;
-	font-size: 1em;
-}
-
-.pokemon-detail .info .name {
-	margin: 15px 0 7px;
-	letter-spacing: 1px;
-	font-size: 2rem;
-}
-
-.pokemon-detail .info small {
-	font-size: 1rem;
-}
 
 .stats {
 	display: flex;
@@ -153,7 +109,13 @@ h1 {
 }
 
 .stats p {
+	margin: 0;
 	margin-right: 5px;
+
+}
+
+.abilities {
+	margin-bottom: 10px;
 }
 
 .stats-card-img {
@@ -233,29 +195,32 @@ h1 {
 	}
 }
 
+.Modal {
+	max-width: 350px;
+}
+
 .modal-title {
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
-	border: 1px solid red;
+	align-items: center;	
 }
 
 .modal-img-name {
 	display: flex;
-	border: 1px solid blue;
 	margin-inline: 10px;
 }
 
 .modal-name {
 	display: flex;
 	flex-direction: column;
+	margin-inline: 10px;
 }
 
-.modal img {
+.Modal img {
 	width: 100px;
 }
 
-.modal .type-icon {
+.Modal .type-icon {
 	width: 20px;
 	margin: 2.5px;
 }
