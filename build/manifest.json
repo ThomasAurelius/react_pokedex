@@ -1,0 +1,8 @@
+{
+  "short_name": "Pokdex App",
+  "name": "Pokedex App Sandbox",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
