@@ -163,10 +163,11 @@ h1 {
 }
 
 
-.button {
+.generation-btns .button {
 	background-color: #ffcb00;
 	color: #00428a;
 	border: 1px solid #00428a;
+	font-weight: 700;
 }
 
 
@@ -208,8 +209,20 @@ h1 {
 }
 
 .modal-img-name {
+	position: relative;
 	display: flex;
 	margin-inline: 10px;
+}
+
+.modal-number {
+	position: absolute;
+	top: 20px;
+	right: 10px;
+	font-size: 2rem;
+}
+
+.modal-icons {
+	display: flex;
 }
 
 .modal-name {
@@ -223,9 +236,10 @@ h1 {
 }
 
 .Modal .type-icon {
-	width: 25px;
+	width: 40px;
 	margin: 2.5px;
 }
+
 
 .pokemon {
 	position: relative;

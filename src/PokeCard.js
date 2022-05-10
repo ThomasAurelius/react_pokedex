@@ -139,17 +139,21 @@ const types = pokemonData.types.map(item => {
         <Modal.Header >
           <Modal.Title >
             <div className="modal-title">
-              <div>
-                <span className="number">#{pokemonData.id}</span>
-              </div>
+              
               <div className='modal-img-name'>
                 <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonData.id}.svg`} alt={`${name}`} />
                 <div className="modal-name">
                   {name}
-                  <img className="type-icon" src={pokemonIcons[type1]} alt={`${type1} type`} />
-                      {(type1 == type2) ? <></> : <img className="type-icon" src={pokemonIcons[type2]} alt={`${type1} type`} /> }
+                  <div className="modal-icons">
+                    <img className="type-icon" src={pokemonIcons[type1]} alt={`${type1} type`} />
+                        {(type1 == type2) ? <></> : <img className="type-icon" src={pokemonIcons[type2]} alt={`${type1} type`} /> }
+                  </div>
                 </div>
-              </div>              
+              </div> 
+                <div>
+                  <span className="number modal-number">#{pokemonData.id}</span>
+                </div>
+                           
             </div>
           </Modal.Title>
         </Modal.Header>
