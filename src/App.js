@@ -1,7 +1,6 @@
 import React from 'react'
 import Header from './Header'
 import PokeCard from './PokeCard'
-import { nanoid } from 'nanoid'
 import './style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -9,7 +8,7 @@ function App() {
 
   const [id, setId] = React.useState({
     startId: 1,
-    endId: 151
+    endId: 15
   })
    
 

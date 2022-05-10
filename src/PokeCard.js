@@ -50,7 +50,7 @@ export default function PokeCard(props) {
   }
   getPokemon(props.id)
      
-    }, [])  
+    }, [props.id])  
 
   if (loading) return <h1>LOADING....</h1>
   
@@ -94,28 +94,29 @@ const pokemonIcons = {
    normal: '#F5F5F5',	
 	 dragon: '#97b3e6',	
 	 flying: '#30aae2',
-   ghost: "",
-   dark: "",
+   ghost: "darkgrey",
+   dark: "black",
 	 fighting: '#E6E0D4',	
    steel: '#979595',
    ice: '#6eb8e9'   
 }
 const main_types = Object.keys(colors)
+//cleanup type/poke_type/main_type/colors etc now that colors is not being used for bg.
 
-const poke_type = pokemonData.types.map(item => {
+
+const types = pokemonData.types.map(item => {
     return item.type.name
 })
-   
-   let poke_type2 = ""
-   if (poke_type[1]) {
-      poke_type2 = poke_type[1]
+
+   let type1 = types[0]
+   let type2 = ""
+   if (types[1]) {
+      type2 = types[1]
    } else {
-      poke_type2 = poke_type 
+      type2 = types
    }
 
-  const type = main_types.find(type => poke_type[0].indexOf(type) > -1)
-  const type2 = main_types.find(type => poke_type2.indexOf(type) > -1)
-   
+    
   const name = pokemonData.name[0].toUpperCase() + pokemonData.name.slice(1)
 
    
@@ -139,16 +140,17 @@ const poke_type = pokemonData.types.map(item => {
         
         <div className="PokeCard" key={nanoid()} id={pokemonData.name} onClick={handleShow} >
           <div className="pokemon" >
+          <div className="strangeblueelement" ></div>
             <div id={pokemonData.name} className="pokemon-wrapper">
-
+              
               <div className="img-container">
                 <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonData.id}.svg`} alt={`${name}`} />
               </div>
               <div className="info">            
                 <h3 className="name">{name}</h3>
               
-               <img className="type-icon" src={pokemonIcons[type]} alt={`${type} type`} />
-               {(type !== type2) ? <img className="type-icon" src={pokemonIcons[type2]} alt={`${type} type`} /> : <></> }
+               <img className="type-icon" src={pokemonIcons[type1]} alt={`${type1} type`} />
+               {(type1 == type2) ? <></> : <img className="type-icon" src={pokemonIcons[type2]} alt={`${type1} type`} /> }
 
               </div>  
               <span className="number">#{pokemonData.id}</span>      
@@ -168,8 +170,8 @@ const poke_type = pokemonData.types.map(item => {
                 <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonData.id}.svg`} alt={`${name}`} />
                 <div className="modal-name">
                   {name}
-                  <img className="type-icon" src={pokemonIcons[type]} alt={`${type} type`} />
-                      {(type !== type2) ? <img className="type-icon" src={pokemonIcons[type2]} alt={`${type} type`} /> : <></> }
+                  <img className="type-icon" src={pokemonIcons[type1]} alt={`${type1} type`} />
+                      {(type1 == type2) ? <></> : <img className="type-icon" src={pokemonIcons[type2]} alt={`${type1} type`} /> }
                 </div>
               </div>              
             </div>
@@ -225,8 +227,11 @@ const poke_type = pokemonData.types.map(item => {
       </Modal>    
   </div>
 
+
       );
     
 }
 
 
+//fix close button
+//adjust icon colors
